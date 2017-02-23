@@ -1,0 +1,228 @@
+E # 0 t 0 m 1 ce -1 msg -1
+SB v 1280 rid General-0-20170223-23:45:05-9260 b 1000
+KF p -1 c "" s ""
+MC id 1 c omnetpp::cModule t gobackn.TwoNodes n TwoNodes cm 1
+MS id 1 d ""
+MC id 2 c omnetpp::cModule t gobackn.Super_node pid 1 n n1 cm 1
+GC m 2 g 0 n in o 0
+GC m 2 g 3 n out o 1
+MS id 2 d ""
+MC id 3 c omnetpp::cModule t gobackn.Super_node pid 1 n n2 cm 1
+GC m 3 g 0 n in o 0
+GC m 3 g 3 n out o 1
+MS id 3 d ""
+CC sm 3 sg 3 dm 2 dg 0
+CS sm 3 sg 3 d ""
+CC sm 2 sg 3 dm 3 dg 0
+CS sm 2 sg 3 d ""
+CM id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n "" pe -1
+MC id 6 c App_layer t gobackn.App_layer pid 2 n a_l
+GC m 6 g 0 n din o 0
+GC m 6 g 3 n dout o 1
+MS id 6 d ""
+MC id 7 c Datalink_layer t gobackn.Datalink_layer pid 2 n d_l
+GC m 7 g 0 n ain o 0
+GC m 7 g 2 n pin o 0
+GC m 7 g 5 n aout o 1
+GC m 7 g 7 n pout o 1
+MS id 7 d ""
+MC id 8 c Physical_layer t gobackn.Physical_layer pid 2 n p_l
+GC m 8 g 0 n din o 0
+GC m 8 g 2 n nin o 0
+GC m 8 g 5 n dout o 1
+GC m 8 g 7 n nout o 1
+MS id 8 d ""
+CC sm 7 sg 5 dm 6 dg 0
+CC sm 6 sg 3 dm 7 dg 0
+CC sm 7 sg 7 dm 8 dg 0
+CC sm 8 sg 5 dm 7 dg 2
+CC sm 2 sg 0 dm 8 dg 2
+CC sm 8 sg 7 dm 2 dg 3
+CM id 1 tid 1 eid 1 etid 1 c omnetpp::cMessage n "" pe -1
+MC id 9 c App_layer t gobackn.App_layer pid 3 n a_l
+GC m 9 g 0 n din o 0
+GC m 9 g 3 n dout o 1
+MS id 9 d ""
+MC id 10 c Datalink_layer t gobackn.Datalink_layer pid 3 n d_l
+GC m 10 g 0 n ain o 0
+GC m 10 g 2 n pin o 0
+GC m 10 g 5 n aout o 1
+GC m 10 g 7 n pout o 1
+MS id 10 d ""
+MC id 11 c Physical_layer t gobackn.Physical_layer pid 3 n p_l
+GC m 11 g 0 n din o 0
+GC m 11 g 2 n nin o 0
+GC m 11 g 5 n dout o 1
+GC m 11 g 7 n nout o 1
+MS id 11 d ""
+CC sm 10 sg 5 dm 9 dg 0
+CC sm 9 sg 3 dm 10 dg 0
+CC sm 10 sg 7 dm 11 dg 0
+CC sm 11 sg 5 dm 10 dg 2
+CC sm 3 sg 0 dm 11 dg 2
+CC sm 11 sg 7 dm 3 dg 3
+MB sm 1 tm 2 m initialize(0)
+ME
+MB sm 1 tm 6 m initialize(0)
+BS id 0 tid 0 eid 0 etid 0 c omnetpp::cMessage n "" pe 0
+ES t 0
+ME
+MB sm 1 tm 7 m initialize(0)
+ME
+MB sm 1 tm 8 m initialize(0)
+ME
+MB sm 1 tm 3 m initialize(0)
+ME
+MB sm 1 tm 9 m initialize(0)
+ME
+MB sm 1 tm 10 m initialize(0)
+ME
+MB sm 1 tm 11 m initialize(0)
+ME
+
+E # 1 t 0 m 6 ce 0 msg 0
+CM id 2 tid 2 eid 2 etid 2 c omnetpp::cMessage n "" pe -1
+BS id 2 tid 2 eid 2 etid 2 c A_pdu n "" pe 1
+CL id 2 tid 2 eid 2 etid 2 c A_pdu n "" pe 1 cid 3
+SH sm 6 sg 3
+ES t 0
+- INFO : Letter sent a
+
+E # 2 t 0 m 7 ce 1 msg 2
+CM id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n proc_delay pe -1
+BS id 4 tid 4 eid 4 etid 4 c omnetpp::cMessage n proc_delay pe 2
+ES t 1
+BU id 7 txt "processing delay1 (70%)"
+
+E # 3 t 1 m 7 ce 2 msg 4
+CM id 5 tid 5 eid 5 etid 5 c omnetpp::cMessage n "" pe -1
+BS id 5 tid 5 eid 2 etid 2 c D_pdu n "" pe 3
+CL id 5 tid 5 eid 2 etid 2 c D_pdu n "" pe 3 cid 6
+SH sm 7 sg 7
+ES t 1
+CM id 7 tid 7 eid 7 etid 7 c omnetpp::cMessage n "" pe -1
+BS id 7 tid 7 eid 7 etid 7 c D_pdu n "" pe 3
+CL id 7 tid 7 eid 7 etid 7 c D_pdu n "" pe 3 cid 8
+SH sm 7 sg 5
+ES t 1
+
+E # 4 t 1 m 8 ce 3 msg 5
+CM id 9 tid 9 eid 9 etid 9 c omnetpp::cMessage n "" pe -1
+BS id 9 tid 9 eid 2 etid 2 c P_pdu n "" pe 4
+CL id 9 tid 9 eid 2 etid 2 c P_pdu n "" pe 4 cid 10
+SH sm 8 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 1.1
+
+E # 5 t 1 m 6 ce 3 msg 7
+BU id 6 txt request_letter
+CM id 11 tid 11 eid 11 etid 11 c omnetpp::cMessage n "" pe -1
+BS id 11 tid 11 eid 11 etid 11 c A_pdu n "" pe 5
+CL id 11 tid 11 eid 11 etid 11 c A_pdu n "" pe 5 cid 12
+SH sm 6 sg 3
+ES t 1
+- INFO : Request received for letter-526, sent succesfully
+
+E # 6 t 1 m 7 ce 5 msg 11
+CM id 13 tid 13 eid 13 etid 13 c omnetpp::cMessage n proc_delay pe -1
+BS id 13 tid 13 eid 13 etid 13 c omnetpp::cMessage n proc_delay pe 6
+ES t 2
+BU id 7 txt "processing delay1 (70%)"
+
+E # 7 t 1.1 m 11 ce 4 msg 9
+CM id 14 tid 14 eid 14 etid 14 c omnetpp::cMessage n "" pe -1
+CL id 5 tid 5 eid 2 etid 2 c D_pdu n "" pe 4 cid 15
+BS id 15 tid 5 eid 2 etid 2 c D_pdu n "" pe 7
+CL id 15 tid 5 eid 2 etid 2 c D_pdu n "" pe 7 cid 16
+SH sm 11 sg 5
+ES t 1.1
+
+E # 8 t 1.1 m 10 ce 7 msg 15
+CM id 17 tid 17 eid 17 etid 17 c omnetpp::cMessage n "" pe -1
+CM id 18 tid 18 eid 18 etid 18 c omnetpp::cMessage n "" pe -1
+BS id 18 tid 18 eid 18 etid 18 c D_pdu n "" pe 8
+CL id 18 tid 18 eid 18 etid 18 c D_pdu n "" pe 8 cid 19
+SH sm 10 sg 7
+ES t 1.1
+
+E # 9 t 1.1 m 11 ce 8 msg 18
+CM id 20 tid 20 eid 20 etid 20 c omnetpp::cMessage n "" pe -1
+BS id 20 tid 20 eid 18 etid 18 c P_pdu n "" pe 9
+CL id 20 tid 20 eid 18 etid 18 c P_pdu n "" pe 9 cid 21
+SH sm 11 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 1.2
+
+E # 10 t 1.2 m 8 ce 9 msg 20
+CM id 22 tid 22 eid 22 etid 22 c omnetpp::cMessage n "" pe -1
+CL id 18 tid 18 eid 18 etid 18 c D_pdu n "" pe 9 cid 23
+BS id 23 tid 18 eid 23 etid 18 c D_pdu n "" pe 10
+CL id 23 tid 18 eid 23 etid 18 c D_pdu n "" pe 10 cid 24
+SH sm 8 sg 5
+ES t 1.2
+
+E # 11 t 1.2 m 7 ce 10 msg 23
+
+E # 12 t 2 m 7 ce 6 msg 13
+CM id 25 tid 25 eid 25 etid 25 c omnetpp::cMessage n "" pe -1
+BS id 25 tid 25 eid 11 etid 11 c D_pdu n "" pe 12
+CL id 25 tid 25 eid 11 etid 11 c D_pdu n "" pe 12 cid 26
+SH sm 7 sg 7
+ES t 2
+CM id 27 tid 27 eid 27 etid 27 c omnetpp::cMessage n "" pe -1
+BS id 27 tid 27 eid 27 etid 27 c D_pdu n "" pe 12
+CL id 27 tid 27 eid 27 etid 27 c D_pdu n "" pe 12 cid 28
+SH sm 7 sg 5
+ES t 2
+
+E # 13 t 2 m 8 ce 12 msg 25
+CM id 29 tid 29 eid 29 etid 29 c omnetpp::cMessage n "" pe -1
+BS id 29 tid 29 eid 11 etid 11 c P_pdu n "" pe 13
+CL id 29 tid 29 eid 11 etid 11 c P_pdu n "" pe 13 cid 30
+SH sm 8 sg 7
+SH sm 2 sg 3 pd 0.1
+SH sm 3 sg 0
+ES t 2.1
+
+E # 14 t 2 m 6 ce 12 msg 27
+BU id 6 txt request_letter
+CM id 31 tid 31 eid 31 etid 31 c omnetpp::cMessage n "" pe -1
+BS id 31 tid 31 eid 31 etid 31 c A_pdu n "" pe 14
+CL id 31 tid 31 eid 31 etid 31 c A_pdu n "" pe 14 cid 32
+SH sm 6 sg 3
+ES t 2
+- INFO : Request received for letter-525, sent succesfully
+
+E # 15 t 2 m 7 ce 14 msg 31
+CM id 33 tid 33 eid 33 etid 33 c omnetpp::cMessage n proc_delay pe -1
+BS id 33 tid 33 eid 33 etid 33 c omnetpp::cMessage n proc_delay pe 15
+ES t 3
+BU id 7 txt "processing delay1 (70%)"
+
+E # 16 t 2.1 m 11 ce 13 msg 29
+CM id 34 tid 34 eid 34 etid 34 c omnetpp::cMessage n "" pe -1
+CL id 25 tid 25 eid 11 etid 11 c D_pdu n "" pe 13 cid 35
+BS id 35 tid 25 eid 11 etid 11 c D_pdu n "" pe 16
+CL id 35 tid 25 eid 11 etid 11 c D_pdu n "" pe 16 cid 36
+SH sm 11 sg 5
+ES t 2.1
+
+E # 17 t 2.1 m 10 ce 16 msg 35
+CM id 37 tid 37 eid 37 etid 37 c omnetpp::cMessage n "" pe -1
+CM id 38 tid 38 eid 38 etid 38 c omnetpp::cMessage n "" pe -1
+BS id 38 tid 38 eid 38 etid 38 c D_pdu n "" pe 17
+CL id 38 tid 38 eid 38 etid 38 c D_pdu n "" pe 17 cid 39
+SH sm 10 sg 7
+ES t 2.1
+
+E # 18 t 2.1 m 11 ce 17 msg 38
+CM id 40 tid 40 eid 40 etid 40 c omnetpp::cMessage n "" pe -1
+BS id 40 tid 40 eid 38 etid 38 c P_pdu n "" pe 18
+CL id 40 tid 40 eid 38 etid 38 c P_pdu n "" pe 18 cid 41
+SH sm 11 sg 7
+SH sm 3 sg 3 pd 0.1
+SH sm 2 sg 0
+ES t 2.2
+SE e 0 c 9 m "The user has finished the simulation at event #18, t=2.1."
